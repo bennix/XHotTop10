@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "X Hot News Finder",
+  "version": "0.1.0",
+  "description": "Find and export the hottest X posts about news, economy, war, stocks, tech, and IT.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["https://x.com/*", "https://twitter.com/*"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/search*", "https://twitter.com/search*"],
+      "js": ["src/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "X Hot News Finder"
+  }
+}
